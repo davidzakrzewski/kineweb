@@ -7,6 +7,7 @@ import Home from './pages/home/home';
 import KinenavTop from "./components/kinenav/kinenavTop";
 import {Col, Row} from "react-bootstrap";
 import KinenavLeft from "./components/kinenav/kinenavLeft";
+import Patient from "./pages/patient/patient";
 
 function App() {
     return (
@@ -21,6 +22,7 @@ function App() {
                         <Switch>
                             <Route exact path="/" component={Home}/>
                             <Route path="/home" component={Home}/>
+                            <Route path="/patient/:id" component={Patient}/>
                         </Switch>
                     </Col>
                 </Row>

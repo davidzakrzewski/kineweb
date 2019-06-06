@@ -1,5 +1,5 @@
 import React from 'react';
-import {Button, Col, Form, FormControl, InputGroup, Nav, Navbar, NavDropdown, Row} from "react-bootstrap";
+import {Button, Form, FormControl, InputGroup, Nav, Navbar, NavDropdown} from "react-bootstrap";
 import {FontAwesomeIcon} from '@fortawesome/react-fontawesome'
 import {faSearch} from '@fortawesome/free-solid-svg-icons'
 import styled from "styled-components";

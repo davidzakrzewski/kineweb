@@ -26,7 +26,7 @@ class KinenavLeft extends React.Component {
         return (
             <Styles>
                 <Nav defaultActiveKey="/" className="flex-column">
-                    <Nav.Link href="/home" className="">
+                    <Nav.Link href="/dashboard/" className="">
                         <Row className="justify-content-center">
                             <FontAwesomeIcon icon={faHome} size={"2x"}/>
                         </Row>

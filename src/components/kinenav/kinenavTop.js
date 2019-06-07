@@ -4,6 +4,7 @@ import {FontAwesomeIcon} from '@fortawesome/react-fontawesome'
 import {faSearch} from '@fortawesome/free-solid-svg-icons'
 import styled from "styled-components";
 import colors, {utils} from "../../styles/constants";
+import {Redirect} from "react-router-dom";
 
 const Styles = styled.div`
     .navbar {
@@ -39,12 +40,34 @@ const Styles = styled.div`
 `;
 
 class KinenavTop extends React.Component {
+    constructor(props) {
+        super(props);
+        this.state = {
+            logOut: false
+        }
+    }
+
+    handleClick = () => {
+        localStorage.removeItem('token');
+        this.setState({
+            logOut: true
+        })
+    };
+
+    renderLogout = () => {
+        if (this.state.logOut === true) {
+            return (
+                <Redirect to="/"/>
+            );
+        }
+    };
 
     render() {
         return (
             <Styles>
+                {this.renderLogout()}
                 <Navbar bg="light" expand="lg">
-                    <Navbar.Brand href="#home">Kine+</Navbar.Brand>
+                    <Navbar.Brand href="/dashboard">Kine+</Navbar.Brand>
                     <Navbar.Toggle aria-controls="basic-navbar-nav"/>
                     <Navbar.Collapse id="basic-navbar-nav">
                         <Form inline className="mr-auto">
@@ -64,7 +87,7 @@ class KinenavTop extends React.Component {
                         <Nav>
                             <NavDropdown title="David Zakrzewski" id="basic-nav-dropdown">
                                 <NavDropdown.Item href="#action/3.1">Mon compte</NavDropdown.Item>
-                                <NavDropdown.Item href="#action/3.2">Déconnexion</NavDropdown.Item>
+                                <NavDropdown.Item onClick={this.handleClick}>Déconnexion</NavDropdown.Item>
                             </NavDropdown>
                         </Nav>
                     </Navbar.Collapse>

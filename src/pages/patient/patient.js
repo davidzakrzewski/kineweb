@@ -106,7 +106,7 @@ class Patient extends React.Component {
             <Styles>
                 <Row className="mt-4 row-patient">
                     <Col>
-                        <Link to="/" className="back-link">Retour</Link>
+                        <Link to="/dashboard/" className="back-link">Retour</Link>
                     </Col>
                 </Row>
                 <Row className="mt-4 row-patient">

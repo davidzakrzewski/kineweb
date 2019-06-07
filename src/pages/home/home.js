@@ -53,7 +53,8 @@ class Home extends React.Component {
                         </div>
                     </Col>
                     <Col className="d-flex justify-content-end align-self-end">
-                        <Link to={`/patient/${patient._id}`}>Accéder à la fiche patient</Link>
+                        {/*<Link to={`/dashboard/patient/${patient._id}`}>Accéder à la fiche patient</Link>*/}
+                        <Link to="/dashboard/patient/02">Accéder à la fiche patient</Link>
                     </Col>
                 </Row>
             </>
@@ -80,7 +81,7 @@ class Home extends React.Component {
                         </div>
                     </Col>
                     <Col className="d-flex justify-content-end align-self-end">
-                        <Link to={`/patient/${patient._id}`}>Accéder à la fiche patient</Link>
+                        <Link to={`/dashboard/patient/${patient._id}`}>Accéder à la fiche patient</Link>
                     </Col>
                 </Row>
             </>
@@ -99,7 +100,7 @@ class Home extends React.Component {
                             {patient.first_name} {patient.last_name.toUpperCase()}
                         </Col>
                         <Col className="d-flex justify-content-end">
-                            <Link to={`/patient/${patient._id}`}>Accéder à la fiche patient</Link>
+                            <Link to={`/dashboard/patient/${patient._id}`}>Accéder à la fiche patient</Link>
                         </Col>
                     </Row>
                 )

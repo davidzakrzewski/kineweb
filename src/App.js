@@ -1,32 +1,40 @@
 import React from 'react';
 import {
-    BrowserRouter as Router,
+    BrowserRouter as Router, Redirect,
     Route, Switch
 } from "react-router-dom";
-import Home from './pages/home/home';
-import KinenavTop from "./components/kinenav/kinenavTop";
-import {Col, Row} from "react-bootstrap";
-import KinenavLeft from "./components/kinenav/kinenavLeft";
-import Patient from "./pages/patient/patient";
+import {Dashboard} from "./pages/dashboard";
+import {Login} from "./pages/Login";
+import ResetPassword from "./pages/resetPassword";
+
+const PrivateRoute = ({component: Component, ...rest}) => (
+    <Route
+        {...rest}
+        render={props =>
+            localStorage.getItem('token') ? (
+                <Component {...props} />
+            ) : (
+                <Redirect
+                    to={{
+                        pathname: '/login',
+                        state: {from: props.location}
+                    }}
+                />
+            )
+        }
+        />
+);
 
 function App() {
     return (
         <Router>
-            <div>
-                <KinenavTop/>
-                <Row style={{margin: '0'}}>
-                    <Col style={{flex: '0 0 100px', padding: '0'}}>
-                        <KinenavLeft/>
-                    </Col>
-                    <Col>
-                        <Switch>
-                            <Route exact path="/" component={Home}/>
-                            <Route path="/home" component={Home}/>
-                            <Route path="/patient/:id" component={Patient}/>
-                        </Switch>
-                    </Col>
-                </Row>
-            </div>
+                <Switch>
+                    <Route path="/login" component={Login}/>
+                    <Route path="/resetPassword" component={ResetPassword}/>
+                    <PrivateRoute exact path="/" component={Dashboard}/>
+                    <PrivateRoute path="/dashboard" component={Dashboard}/>
+                    <Redirect to="/"/>
+                </Switch>
         </Router>
     );
 }

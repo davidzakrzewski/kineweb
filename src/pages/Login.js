@@ -35,6 +35,7 @@ export class Login extends React.Component {
 
     constructor(props) {
         super(props);
+        document.title = "Connexion";
         this.state = {
             email: '',
             password: '',

@@ -42,13 +42,14 @@ const Styles = styled.div`
 class Patient extends React.Component {
     constructor(props) {
         super(props);
+        document.title = "Fiche patient";
         this.patient = patientService.getPatientsById(this.props.match.params.id);
     }
 
     renderPatient = () => {
         return (
             <>
-                <h1>Patient actuel</h1>
+                <h1>Fiche patient</h1>
                 <Row className="d-flex align-items-center mt-3">
                     <img src={this.patient.profile_pic} alt="photo_patient" className="profile_pic"/>
                     <Col className="ml-4">

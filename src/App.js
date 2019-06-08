@@ -6,6 +6,7 @@ import {
 import {Dashboard} from "./pages/dashboard";
 import {Login} from "./pages/Login";
 import ResetPassword from "./pages/resetPassword";
+import ResetClientPassword from "./pages/resetClientPassword";
 
 const PrivateRoute = ({component: Component, ...rest}) => (
     <Route
@@ -31,6 +32,7 @@ function App() {
                 <Switch>
                     <Route path="/login" component={Login}/>
                     <Route path="/resetPassword" component={ResetPassword}/>
+                    <Route path="/resetClientPassword/:id" component={ResetClientPassword}/>
                     <PrivateRoute exact path="/" component={Dashboard}/>
                     <PrivateRoute path="/dashboard" component={Dashboard}/>
                     <Redirect to="/"/>

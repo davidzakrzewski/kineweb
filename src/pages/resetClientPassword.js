@@ -3,14 +3,13 @@ import {Alert, Button, Col, Form, Row} from "react-bootstrap";
 import {Link} from "react-router-dom";
 import styled from "styled-components";
 import colors from "../styles/constants";
-import userService from "../services/userService";
 
 
 const Style = styled.div`
     height: 100vh;
     
     .form {
-        width: 300px;
+        width: 400px;
     }
     
     button {
@@ -32,28 +31,22 @@ const Style = styled.div`
     }
 `;
 
-class ResetPassword extends React.Component {
-
+export default class ResetClientPassword extends React.Component {
     constructor(props) {
-        document.title = 'Réinitialiser le mot de passe';
         super(props);
+        document.title = "Réinitialiser le mot de passe";
+        this.clientId = this.props.match.params.id;
         this.state = {
             email: '',
             showInfo: false
         }
     }
 
-    handleSubmit = async (event) => {
+    handleSubmit = (event) => {
         event.preventDefault();
-        let res = await userService.resetPassword(this.state.email);
-        if (res.success === true) {
-            this.setState({
-                showInfo: true
-            });
-        }
-        else {
-            console.log('error');
-        }
+        this.setState({
+            showInfo: true
+        });
     };
 
     handleClick = () => {
@@ -88,13 +81,13 @@ class ResetPassword extends React.Component {
                     <Col>
                         <Form onSubmit={this.handleSubmit}>
                             <Form.Group controlId="email">
-                                <Form.Label>Adresse Email</Form.Label>
-                                <Form.Control type="email" onChange={this.handleChange} placeholder="Email" />
+                                <Form.Label>Nouveau mot de passe</Form.Label>
+                                <Form.Control type="password" onChange={this.handleChange} placeholder="Mot de passe" />
                             </Form.Group>
                             <Form.Group className="d-flex align-content-center" controlId="cancel">
                                 <Form.Label className="ml-auto" ><Link to="/">Annuler</Link></Form.Label>
                                 <Button className="ml-4" variant="primary" type="submit">
-                                    Connexion
+                                    Réinitialiser le mot de passe
                                 </Button>
                             </Form.Group>
                         </Form>
@@ -117,5 +110,3 @@ class ResetPassword extends React.Component {
         );
     }
 }
-
-export default ResetPassword;

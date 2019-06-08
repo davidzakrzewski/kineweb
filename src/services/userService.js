@@ -1,3 +1,5 @@
+import config from "../config";
+
 let login = (email, password) => {
     return (new Promise(resolve => setTimeout(() => {
         if (email === 'mail@mail.com') {
@@ -28,7 +30,30 @@ let me = () => {
     ), 1000)));
 };
 
+let resetPassword = (email) => {
+
+    console.log(email);
+
+    let options = {
+        method: 'POST',
+        headers: {
+            'Content-type': 'application/json'
+        },
+        body: JSON.stringify({to: email})
+    };
+
+    return (
+
+        fetch(config.apiUrl + '/email',
+            options)
+            .then((response) => {
+                return response.json();
+            })
+    );
+};
+
 export default {
     login,
-    me
+    me,
+    resetPassword,
 }

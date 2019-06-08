@@ -7,9 +7,6 @@ import KinenavLeft from "../components/kinenav/kinenavLeft";
 import Patient from "./patient/patient";
 
 export class Dashboard extends React.Component {
-    constructor(props) {
-        super(props);
-    }
 
     render() {
         return(

@@ -1,6 +1,6 @@
 import React from 'react';
 import patientService from '../../services/patientService';
-import {Col, Row} from "react-bootstrap";
+import {Button, Col, Row} from "react-bootstrap";
 import {KineBox} from "../../styles/style";
 import styled from "styled-components";
 import {Link} from "react-router-dom";
@@ -34,6 +34,11 @@ const Styles = styled.div`
     .back-link {
         color: ${colors.green};
         font-weight: bold;
+    }
+    
+    .btn-green {
+        background-color: ${colors.green};
+        border-color: ${colors.green};
     }
     
 `;
@@ -122,6 +127,7 @@ class Patient extends React.Component {
                     <Col>
                         <KineBox>
                             {this.renderExercices()}
+                            <Button className="btn-green">Prescrire un nouvel exercice</Button>
                         </KineBox>
                     </Col>
                 </Row>
